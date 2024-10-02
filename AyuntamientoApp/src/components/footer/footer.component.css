@@ -1,0 +1,46 @@
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    backdrop-filter:blur(30px);
+    box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
+    
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+    padding: 20px;
+}
+.social-media{
+    padding-bottom: 20px;
+}
+.logo-santander{
+    width: 100px;
+    height: 40px;
+}
+@media (min-width: 768px){
+    .footer{
+        justify-content: center;
+        flex-direction: row;
+        
+
+    }
+    .social-media{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 35px;
+    }
+    .logo-santander{
+        width: 300px;
+        height: 80px;
+        padding-right: 100px;
+    }
+}
