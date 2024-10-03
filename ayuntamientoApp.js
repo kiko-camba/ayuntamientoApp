@@ -8,7 +8,6 @@ const mongoUri = process.env.MONGO_URI;
 
 const app = express();
 
-
 app.use(express.json());
 
 const connectDB = async () =>{

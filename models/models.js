@@ -25,14 +25,15 @@ const newSupplier = new mongoose.Schema({
         type: String,
         require: true
     },
-    telephone:{
+    telephoneNumber:{
         type: String,
         require: true
     }
 },
 {
     versionKey: false,
+    timestamps: true,
     collection: 'suppliers'
 }
 );
-module.exports = mongoose.model('suppliers', newSupplier)
+export const suppliers = mongoose.model('suppliers', newSupplier)
