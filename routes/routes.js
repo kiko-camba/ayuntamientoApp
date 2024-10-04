@@ -1,5 +1,5 @@
 import express from 'express';
-import supplierController from '../controllers/routes.controllers';
+import  supplierController  from '../controllers/routes.controllers.js';
 import cors from 'cors';
  
 

@@ -74,9 +74,21 @@ supplierController.getSupplier = async (req, res) => {
 };
 supplierController.editSupplier = async (req, res) => {
     try{
-       await suppliers.findByIdAndUpdate(req.params.id, req.body)
+        const { cif, ...updateData} = req.body;
+        if(!cif){
+            return res.status(200).json({
+                message: 'cif requerido'
+            })
+        };
+        const supplierUpdate =  await suppliers.findOneAndUpdate({ cif }, updateData)
+        if(!supplierUpdate){
+            return res.status(200).json({
+                message: 'Proveedor no encontrado'
+            })
+        }
        return res.status(200).json({
-        message: 'Proveedor actualizado'
+        message: 'Proveedor actualizado',
+        supplierUpdate
        })
 
     }catch(error){
@@ -88,7 +100,30 @@ supplierController.editSupplier = async (req, res) => {
 };
 supplierController.deleteSupplier = async (req, res) => {
     try{
-        await suppliers.findByIdAndDelete(req.params.id)
+        const { cif } = req.body;
+        if(!cif){
+            return res.status(200).json({
+                message: 'cif requerido'
+            });
+        };
+        const supplierToDelete = await suppliers.findOne({ cif });
+        if(!supplierToDelete){
+            return res.status(200).json({
+                message: 'Proveedor no encontrado'
+            });
+        };
+        const supplierDeleted = await suppliers.findOneAndDelete({ cif });
+        if(!supplierDeleted.deletedCount === 0){
+            return res.status(200).json({
+                message: 'Proveedor no encontrado'
+            });
+        };
+        return res.status(200).json({
+            message: 'Proveedor eliminado',
+            supplierDeleted: supplierToDelete
+        })
+
+
 
     }catch(error){
         return res.status(500).json({
