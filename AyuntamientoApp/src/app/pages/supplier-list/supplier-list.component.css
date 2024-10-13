@@ -1,0 +1,8 @@
+.table-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../../img/DALL·E\ 2024-10-13\ 00.31.24\ -\ A\ modern\ and\ sleek\ background\ for\ a\ municipal\ supplier\ management\ website.\ The\ design\ features\ a\ blend\ of\ a\ classical\ town\ hall\ building\ in\ the\ backgr.webp') ;
+    height: 78vh;
+   
+}

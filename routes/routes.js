@@ -9,10 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', supplierController.getSuppliers);
-app.get('/:cif', supplierController.getSupplier);
+app.get('/suppliers/:cif', supplierController.getSupplier);
 app.post('/register', supplierController.createSupplier);
-app.put('/:id', supplierController.editSupplier);
-app.delete('/:id', supplierController.deleteSupplier);
+app.put('/suppliers/:cif', supplierController.editSupplier);
+app.delete('/suppliers/:cif', supplierController.deleteSupplier);
 
 
 export default app

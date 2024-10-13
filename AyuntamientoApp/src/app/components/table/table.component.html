@@ -1,0 +1,76 @@
+<main class="table-container">
+    <section class="table-header">
+        <div class="title-box">
+            <h3>Lista de proveedores</h3> 
+        </div>
+        <div class="lookup-box">
+            <app-lookup></app-lookup>
+        </div>
+        <div class="btn-box">
+            <button class="btn-add" [routerLink]="'/register'">
+                <i class="fa-regular fa-square-plus fa-2xl" style="color: #0557e6;" ></i>
+            </button>
+        </div>
+       
+  
+    </section>
+    
+    <section class="table-body">
+          <table class="table">
+        <thead>
+            <tr>
+                <th>CIF</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Actividad</th>
+                <th>Dirección</th>
+                <th>Localización</th>
+                <th>CP</th>
+                <th>Teléfono</th>
+                <th></th>
+                
+            </tr>
+           
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <td>{{item.cif}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.activity}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.postalCode}}</td>
+                <td>{{item.telephoneNumber}}</td>
+                <td>
+                    <button class="btn-delete" (click)="delete(item.cif)">
+                        <i class="fa-solid fa-trash-can fa-2xl" style="color: #ff0000;"></i>
+
+                    </button>
+                    <button class="btn-update" [routerLink]="'/suppliers/' + item.cif">
+                        <i class="fa-solid fa-square-pen fa-2xl" style="color: #0557e6;"></i>
+                    </button></td>
+                
+            </tr>
+        </tbody>
+       
+    </table>
+  <!-- Modal de confirmación -->
+<div class="modal" *ngIf="isModalVisible">
+    <div class="modal-content">
+   
+      <p>¿Estás seguro de que deseas eliminar este proveedor?<br> Se borrarán todos sus datos.</p>
+      <div class="btn-modalbox">
+          <button class="btn-deleteModal" (click)="confirmDelete(cifToDelete)">Eliminar</button>
+      <button class="btn-cancelModal" (click)="closeModal()">Cancelar</button>
+      </div>
+    
+    </div>
+  </div>
+  
+  <!-- Mensajes de éxito o error -->
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </section>
+    
+</main>

@@ -1,0 +1,22 @@
+<div class="lookUpFormBox">
+    <form class="search-form" [formGroup]="lookUpForm" (ngSubmit)="getSupplier()" >
+        <div class="data">
+            <label for="cif">CIF</label>
+          
+            <input class="input" type="text" name="cif" id="cif" formControlName="cif" (focus)=" clearErrorMessage() ">
+           
+        </div>
+      
+        <div class="btn-box">
+            <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #0557e6;" ></i></button>
+        </div>
+        <div *ngIf="cif.invalid &&(cif.dirty ||cif.touched) " class="error">
+            <small *ngIf="cif.errors?.['required']"></small>
+            <small *ngIf="cif.errors?.['maxlength']">CIF no puede tener más de 8 caracteres</small>
+        </div>
+        <div *ngIf="errorMessage" class="error">
+            {{ errorMessage }}
+          </div>
+     
+    </form>
+</div>

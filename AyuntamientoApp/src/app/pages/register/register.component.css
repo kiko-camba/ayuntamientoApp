@@ -1,0 +1,15 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background:url('../../../img/DALL·E\ 2024-10-13\ 00.31.24\ -\ A\ modern\ and\ sleek\ background\ for\ a\ municipal\ supplier\ management\ website.\ The\ design\ features\ a\ blend\ of\ a\ classical\ town\ hall\ building\ in\ the\ backgr.webp') center / cover;
+}
+@media (min-width: 768px){
+  
+    .form{
+        height: auto;
+        width: 100%;
+    }
+
+}

@@ -9,6 +9,10 @@ const newSupplier = new mongoose.Schema({
         type: String,
         require: true
     },
+    email:{
+        type: String,
+        require: true
+    },
     activity:{
         type: String,
         require: true

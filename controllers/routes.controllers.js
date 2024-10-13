@@ -19,35 +19,36 @@ supplierController.getSuppliers = async (req, res) =>{
 };
 supplierController.createSupplier = async (req, res) => {
     try{
-        const { cif, name, activity, address, location, postalCode, telephoneNumber   } = req.body
-        if( !cif, !name, !activity, !address, !location, !postalCode, !telephoneNumber){
-            return res.staturs(200).json({
+        const { cif, name, email,  activity, address, location, postalCode, telephoneNumber   } = req.body
+        if( !cif || !name || !email || !activity || !address || !location || !postalCode || !telephoneNumber){
+            return res.status(200).json({
                 message: 'Deben completarse todos los campos'
             })
         }
         const supplierFounded = await suppliers.findOne({ cif });
         if(!supplierFounded){
-            const supplierSaved = new suppliers({ cif, name, activity, address, location, postalCode, telephoneNumber})
+            const supplierSaved = new suppliers({ cif, name, email, activity, address, location, postalCode, telephoneNumber})
             await supplierSaved.save()
             return res.status(200).json({
                 message: 'Proveedor registrado'
             })
 
         }else{
-            return res.status(200).json({
+            return res.status(409).json({
                 message: 'El proveedor ya existe'
             })
         }
 
     }catch(error){
         return res.status(500).json({
-            message: 'Batabase error'
+            message: 'Database error'
         })
     }
 };
 supplierController.getSupplier = async (req, res) => {
     try{
-        const { cif } = req.body;
+        const { cif } = req.params;
+        console.log(cif)
         if(!cif){
             return res.status(200).json({
                 message: 'Debe completarse el campo'
@@ -55,7 +56,7 @@ supplierController.getSupplier = async (req, res) => {
         }
         const supplierFounded = await suppliers.findOne({ cif });
         if(!supplierFounded){
-            return res.status(200).json({
+            return res.status(404).json({
                 message: 'El proveedor no existe'
             })
         }else{
@@ -82,7 +83,7 @@ supplierController.editSupplier = async (req, res) => {
         };
         const supplierUpdate =  await suppliers.findOneAndUpdate({ cif }, updateData)
         if(!supplierUpdate){
-            return res.status(200).json({
+            return res.status(404).json({
                 message: 'Proveedor no encontrado'
             })
         }
@@ -100,7 +101,7 @@ supplierController.editSupplier = async (req, res) => {
 };
 supplierController.deleteSupplier = async (req, res) => {
     try{
-        const { cif } = req.body;
+        const { cif } = req.params;
         if(!cif){
             return res.status(200).json({
                 message: 'cif requerido'
@@ -108,16 +109,12 @@ supplierController.deleteSupplier = async (req, res) => {
         };
         const supplierToDelete = await suppliers.findOne({ cif });
         if(!supplierToDelete){
-            return res.status(200).json({
+            return res.status(404).json({
                 message: 'Proveedor no encontrado'
             });
         };
-        const supplierDeleted = await suppliers.findOneAndDelete({ cif });
-        if(!supplierDeleted.deletedCount === 0){
-            return res.status(200).json({
-                message: 'Proveedor no encontrado'
-            });
-        };
+        await suppliers.findOneAndDelete({ cif });
+       
         return res.status(200).json({
             message: 'Proveedor eliminado',
             supplierDeleted: supplierToDelete

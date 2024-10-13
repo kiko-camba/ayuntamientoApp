@@ -1,17 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 body{
-    background: url('../src/img/calma-amanecer-raqueros.jpg') center / cover ;
-    height: 100vh;
-}
-main{
+    background: rgb(81, 161, 222);
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    background: url('../src/img/DALL·E\ 2024-10-13\ 00.31.24\ -\ A\ modern\ and\ sleek\ background\ for\ a\ municipal\ supplier\ management\ website.\ The\ design\ features\ a\ blend\ of\ a\ classical\ town\ hall\ building\ in\ the\ backgr.webp') center / cover;
+
+  
+    
+} 
+ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px;
+    flex-wrap: wrap;
+
   
    
 }
@@ -20,17 +28,18 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 78vh;
+    height: 100vh;
     text-align: justify;
-    width: 1000px;
-    font-size: 1.5rem;
+    width: 50rem;
+    font-size: 1.3rem;
     color: #000;
-    margin: 30px;
+    margin: 20px;
     padding: 30px;
+    height: auto;
     backdrop-filter:blur(30px);
-    box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
+    box-shadow: 0px 0px 10px rgba(227,228,237,0.37);
     border: 2px solid rgba(255, 255, 255, 0.18);
-    border-radius: 20px;
+  
     
 
     

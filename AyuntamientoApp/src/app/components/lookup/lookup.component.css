@@ -1,0 +1,72 @@
+.lookUpFormBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.search-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0 ;
+}
+.input{
+    margin: 20px;
+    height: 25px;
+    border: none;
+    text-align: center;
+}
+.btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-left: 0px;
+}
+.btn-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    height: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+   
+}
+.btn-search:hover{
+   cursor: pointer;
+
+}
+ .error{
+   position: relative;
+    text-align: center;
+    margin-top: 10px;
+     font-size: 1rem;
+     font-weight: 500;
+     color: rgb(0, 60, 255);
+    
+    
+ }
+@media (min-width: 768px){
+    .input{
+        margin-left: 20px;
+        margin-right: 0px;
+        height: 25px;
+    }
+  
+    .btn-search{
+        height: 30px;
+        margin-left: 0px;
+    }
+    .search-form{
+        flex-direction: row;
+    }
+    
+    .lookUpFormBox{
+    
+        flex-direction: row;
+    }
+
+}

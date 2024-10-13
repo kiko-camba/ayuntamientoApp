@@ -1,0 +1,97 @@
+<div class="form-box">
+    <form class="form" [formGroup]="supplierForm" (ngSubmit)="handleSubmit()">
+        <div class="header-box">
+            <div class="form-title">
+       
+              @if(updateSupplierCif){
+               <h2>Editar proveedor</h2>
+           }
+           @else{
+               <h2>Agregar Proveedor</h2>
+           } 
+         
+           
+           </div>
+             <div class="btn-box">
+               <button class="btn-back" [routerLink]="'/suppliers'"><i class="fa-solid fa-rotate-left fa-2xl" style="color: #0557e6;" ></i></button>
+           </div>
+         </div>
+        <div class="data">
+            <label for="cif">CIF</label>
+            <div *ngIf="cif.invalid &&(cif.dirty ||cif.touched) " class="error">
+                <small *ngIf="cif.errors?.['required']">CIF requerido</small>
+                <small *ngIf="cif.errors?.['maxlength']">CIF no puede tener más de 8 caracteres</small>
+            </div>
+            <input class="input" type="text" name="cif" id="cif" formControlName="cif" (click)="clearErrorMessage()">
+           
+           
+        </div>
+        <div class="data">
+            <label for="name">Nombre Proveedor</label>
+            <div *ngIf="name.invalid &&(name.dirty ||name.touched)"  class="error">
+                <small *ngIf="name.errors?.['required']">Nombre requerido</small>
+            </div>
+            <input class="input" type="text" name="name" id="name" formControlName="name" (click)="clearErrorMessage()">
+          
+        </div>
+        <div class="data">
+            <label for="email">Email</label>
+            <div *ngIf="email.invalid &&(email.dirty || email.touched)"  class="error">
+                <small *ngIf="email.errors?.['required']">Email requerido</small>
+            </div>
+            <input class="input" type="text" name="email" id="email" formControlName="email" (click)="clearErrorMessage()">
+          
+        </div>
+        <div class="data">
+            <label for="activity">Tipo de actividad</label>
+            <div *ngIf="activity.invalid &&(activity.dirty ||activity.touched) " class="error">
+                <small *ngIf="activity.errors?.['required']">Tipo de actividad requerido</small>
+            </div>
+            <input class="input" type="text" name="activity" id="activity" formControlName="activity" (click)="clearErrorMessage()">
+            
+        </div>
+        <div class="data">
+            <label for="address">Dirección</label>
+            <div *ngIf="address.invalid &&(address.dirty ||address.touched) " class="error">
+                <small *ngIf="address.errors?.['required']">Dirección requerido</small>
+            </div>
+            <input class="input" type="text" name="address" id="address" formControlName="address" (click)="clearErrorMessage()">
+           
+        </div>
+        <div class="data">
+            <label for="location">Localización</label>
+            <div *ngIf="location.invalid &&(location.dirty || location.touched) " class="error">
+                <small *ngIf="location.errors?.['required']">Localización requerido</small>
+            </div>
+            <input class="input" type="text" name="location" id="location" formControlName="location" (click)="clearErrorMessage()">
+            
+        </div>
+        <div class="data">
+            <label for="postalCode">CP</label> 
+             <div *ngIf="postalCode.invalid &&(postalCode.dirty || postalCode.touched)" class="error">
+                <small *ngIf="postalCode.errors?.['required']">CP requerido</small>
+            </div>
+            <input class="input" type="text" name="postalCode" id="postalCode" formControlName="postalCode" (click)="clearErrorMessage()">
+          
+        </div>
+        <div class="data">
+            <label for="telephoneNumber">Teléfono</label>
+            <div *ngIf="telephoneNumber.invalid &&(telephoneNumber.dirty ||telephoneNumber.touched) " class="error">
+                <small *ngIf="telephoneNumber.errors?.['required']">Tlfn requerido</small>
+            </div>
+            <input class="input" type="text" name="telephoneNumber" id="telephoneNumber" formControlName="telephoneNumber" (click)="clearErrorMessage()">
+            
+        </div>
+      
+        <div class="btn-box">
+            <button class="btn-form"  type="submit">{{updateSupplierCif ? 'Actualizar' : 'Añadir'}}</button>
+           
+        </div> 
+        <div class="message">
+            <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </div>
+       
+    </form>
+
+</div>
