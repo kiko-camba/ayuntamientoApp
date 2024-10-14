@@ -22,8 +22,8 @@ export class TableComponent implements OnInit {
   errorMessage: string = ''
   successMessage: string = ''
 
-  isModalVisible = false; // Controla la visibilidad del modal
-  cifToDelete!: string  // Guarda el CIF del proveedor a eliminar
+  isModalVisible = false; 
+  cifToDelete!: string 
 
   constructor(
     private supplierService:  SupplierService,
@@ -46,8 +46,8 @@ export class TableComponent implements OnInit {
   }
  
   delete(cif: string) {
-    this.cifToDelete = cif; // Guardar el CIF del proveedor a eliminar
-    this.isModalVisible = true; // Mostrar el modal
+    this.cifToDelete = cif; 
+    this.isModalVisible = true; 
   }
 
   confirmDelete(cif: string) {
@@ -55,20 +55,20 @@ export class TableComponent implements OnInit {
       this.supplierService.deleteSupplier(cif).subscribe({
         next: (result) => {
           console.log(result);
-          this.successMessage = 'Proveedor eliminado'; // Mensaje de éxito
-          this.data = this.data.filter((u) => u.cif !== cif); // Filtrar el proveedor eliminado
-          this.closeModal(); // Cerrar el modal
+          this.successMessage = 'Proveedor eliminado'; 
+          this.data = this.data.filter((u) => u.cif !== cif); 
+          this.closeModal();
         },
         error: (err) => {
           console.error('Error al eliminar el proveedor:', err);
-          this.errorMessage = 'Error al eliminar el proveedor'; // Mensaje de error
+          this.errorMessage = 'Error al eliminar el proveedor';
         }
       });
     }
   }
 
   closeModal() {
-    this.isModalVisible = false; // Ocultar el modal
+    this.isModalVisible = false; 
   }
 }
 

@@ -22,7 +22,7 @@
                 <small *ngIf="cif.errors?.['required']">CIF requerido</small>
                 <small *ngIf="cif.errors?.['maxlength']">CIF no puede tener más de 8 caracteres</small>
             </div>
-            <input class="input" type="text" name="cif" id="cif" formControlName="cif" (click)="clearErrorMessage()">
+            <input class="input" type="text" name="cif" id="cif" formControlName="cif" (click)="clearErrorMessage()" [readonly]="updateSupplierCif ? true : null">
            
            
         </div>

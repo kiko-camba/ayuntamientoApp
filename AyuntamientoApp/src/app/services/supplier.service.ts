@@ -11,9 +11,9 @@ import { catchError, of } from 'rxjs';
 export class SupplierService {
 
    URL_API = "http://localhost:3000"
-  httpClient = inject(HttpClient);
-  private supplier: Supplier[]=[]
-  constructor() { }
+
+  
+  constructor(private httpClient: HttpClient) { }
 
 
 
@@ -37,15 +37,12 @@ export class SupplierService {
     
 
   }
-  addSupplier(newSupplier: Supplier){
+  addSupplier(newSupplier: Supplier): Observable<{ supplierSaved: Supplier }> {
    
-    return this.httpClient.post<{supplierSaved: Supplier[]}>(this.URL_API + '/register', newSupplier)
-   
+    return this.httpClient.post<{supplierSaved: Supplier}>(this.URL_API + '/register', newSupplier)
   
-    
-      
   }
-  updateSupplier(cif: string, supplierUpdate: Supplier){
+  updateSupplier(cif: string, supplierUpdate: Supplier): Observable<any> {
     return this.httpClient.put(this.URL_API + '/suppliers/' + cif, supplierUpdate)
   }
   deleteSupplier(cif: string): Observable<{supplierDeleted: Supplier}>{

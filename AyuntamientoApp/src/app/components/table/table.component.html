@@ -55,7 +55,7 @@
         </tbody>
        
     </table>
-  <!-- Modal de confirmación -->
+  
 <div class="modal" *ngIf="isModalVisible">
     <div class="modal-content">
    
@@ -68,9 +68,12 @@
     </div>
   </div>
   
-  <!-- Mensajes de éxito o error -->
-  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+ 
     </section>
+    <div class="global-message">
+        <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </div>
     
 </main>

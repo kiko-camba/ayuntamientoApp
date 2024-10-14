@@ -59,6 +59,9 @@ export class FormComponent implements OnInit {
     });
 
     this.updateSupplierCif = this.route.snapshot.params['cif'];
+    if(this.updateSupplierCif){
+      this.cif.disable()
+    }
     
     if(this.updateSupplierCif){
       this.supplierService.getSupplier(this.updateSupplierCif).subscribe( (result) =>{
@@ -93,15 +96,20 @@ export class FormComponent implements OnInit {
     if(this.updateSupplierCif){
       this.updateSupplier()
     }else{
-
       const newSupplier: Supplier = this.supplierForm.value;
-      console.log(this.supplierForm.value)
-  
-      this.supplierService.addSupplier(newSupplier).subscribe(()=>{
-      this.successMessage = 'Proveedor añadido correctamente';
-      this.errorMessage = '';
-      this.supplierForm.reset()
-     })
+
+      this.supplierService.addSupplier(newSupplier).subscribe({
+        next: () => {
+          this.successMessage = 'Proveedor añadido correctamente';
+          this.errorMessage = '';
+          this.supplierForm.reset();
+        },
+        error: (error) => {
+          console.error('Error al añadir el proveedor:', error);
+          this.errorMessage = 'Error al añadir el proveedor.';
+        }
+      });
+    
     }
   
  
@@ -113,10 +121,12 @@ export class FormComponent implements OnInit {
     }
     const updateSupplier: Supplier = this.supplierForm.value;
     console.log(this.supplierForm.value)
-    this.supplierService.updateSupplier(this.updateSupplierCif, updateSupplier).subscribe(()=>{
-      this.successMessage = 'Proveedor editado correctamente';
-     
-     })
+    this.supplierService.updateSupplier(this.updateSupplierCif, updateSupplier).subscribe({
+      next: ()=>{
+        this.successMessage = 'Proveedor editado correctamente';
+       
+       }
+    })
   }
   clearErrorMessage() {
   

@@ -186,6 +186,11 @@ tbody tr:hover{
     cursor: pointer;
     color:#fff;
     font-weight: bold;
+}
+.global-message{
+    color: rgb(25, 0, 255);
+    font-size: 20px;
+    font-weight: bold;
 } 
 @media (min-width: 768px){
     td:not(:first-of-type){
